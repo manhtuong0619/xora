@@ -53,7 +53,7 @@ export function ChatInput({
   const formNode = (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center gap-2 rounded-[14px] border-[1.5px] border-[var(--xora-blue)] bg-white px-4 py-[14px]"
+      className="flex items-center gap-2 rounded-[14px] border-[1.5px] border-[var(--xora-blue)] bg-white px-4 py-[16px]"
       style={{ boxShadow: '0 0 0 4px var(--xora-blue-glow)' }}
     >
       <ModelSelectorTrigger count={activeModelIds.length} onClick={() => setPickerOpen(true)} />
@@ -94,7 +94,7 @@ export function ChatInput({
 
   return (
     <div className={cn('border-t border-[var(--xora-border)] px-5 py-4')}>
-      <div className="mx-auto w-full max-w-[560px]">{formNode}</div>
+      <div className="mx-auto w-full max-w-[700px]">{formNode}</div>
     </div>
   );
 }

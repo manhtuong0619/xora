@@ -34,7 +34,7 @@ export function EmptyState(props: EmptyStateProps) {
           Ask any AI, side by side.
         </h1>
 
-        <div className="w-full max-w-[560px]">
+        <div className="w-full max-w-[700px]">
           <ChatInput {...props} variant="hero" />
         </div>
 

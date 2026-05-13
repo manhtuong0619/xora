@@ -3,11 +3,10 @@
 import { type FormEvent, useEffect, useRef, useState } from 'react';
 import { Lock, Mic, Paperclip } from 'lucide-react';
 
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 
 import { AutoModeToggle } from './auto-mode-toggle';
-import { ModelSelectorPanel } from './model-selector-panel';
+import { ModelSelectorModal } from './model-selector-modal';
 import { ModelSelectorTrigger } from './model-selector-trigger';
 import { SendButton } from './send-button';
 
@@ -57,18 +56,13 @@ export function ChatInput({
       className="flex items-center gap-2 rounded-[14px] border-[1.5px] border-[var(--xora-blue)] bg-white px-4 py-[14px]"
       style={{ boxShadow: '0 0 0 4px var(--xora-blue-glow)' }}
     >
-      <Popover open={pickerOpen} onOpenChange={setPickerOpen}>
-        <PopoverTrigger asChild>
-          <ModelSelectorTrigger count={activeModelIds.length} />
-        </PopoverTrigger>
-        <PopoverContent
-          align="start"
-          sideOffset={10}
-          className="border border-[var(--xora-border)] bg-white p-3 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.18)]"
-        >
-          <ModelSelectorPanel selectedIds={activeModelIds} onToggle={onToggleModel} />
-        </PopoverContent>
-      </Popover>
+      <ModelSelectorTrigger count={activeModelIds.length} onClick={() => setPickerOpen(true)} />
+      <ModelSelectorModal
+        open={pickerOpen}
+        onOpenChange={setPickerOpen}
+        selectedIds={activeModelIds}
+        onToggle={onToggleModel}
+      />
 
       <AutoModeToggle enabled={autoMode} onToggle={onToggleAuto} />
 
